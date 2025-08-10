@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  // Format card number in 4-4-4-4-... groups
+ 
   const formatCardNumber = (num) => {
     return num.replace(/\D/g, "").replace(/(.{4})/g, "$1 ").trim();
   };
 
-  // Handle input and keep only digits
+
   const handleCardInput = (e) => {
     const raw = e.target.value.replace(/\D/g, "");
     setCardNumber(raw);
@@ -20,13 +20,13 @@ export default function Home() {
   const [error, setError] = useState("");
   const [liveSuggestion, setLiveSuggestion] = useState(null);
 
-  // Simulate login to get a JWT token (replace with real auth in production)
+  
   const getToken = async () => {
-    // For demo, set a dummy token
+   
     setToken("dummy-jwt-token");
   };
 
-  // Live suggestion for correct last digit
+
   useEffect(() => {
     const suggest = async () => {
       setLiveSuggestion(null);
@@ -51,7 +51,7 @@ export default function Home() {
       }
     };
     suggest();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, [cardNumber]);
 
   const handleSubmit = async (e) => {
@@ -95,7 +95,7 @@ export default function Home() {
           className={`border-2 border-gray-700 rounded-lg px-4 py-3 text-lg transition-all duration-300 outline-none focus:ring-2 focus:ring-blue-400 bg-gray-800 text-white tracking-widest shadow-inner ${result ? 'ring-2 ring-green-400' : ''}`}
           required
           autoComplete="off"
-          maxLength={23} // 19 digits + 4 spaces
+          maxLength={23} 
         />
         <button
           type="submit"
