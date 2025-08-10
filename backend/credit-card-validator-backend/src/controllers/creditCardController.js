@@ -1,8 +1,8 @@
 class CreditCardController {
     validateCard(req, res) {
         const { cardNumber } = req.body;
-        if (!cardNumber) {
-            return res.status(400).json({ error: 'Card number is required' });
+        if (!cardNumber || typeof cardNumber !== 'string' || !/^\d+$/.test(cardNumber)) {
+            return res.status(400).json({ error: 'Card number is required and must be digits only' });
         }
 
        

@@ -63,13 +63,14 @@ export default function Home() {
       await getToken();
     }
     try {
-      const res = await fetch("http://localhost:3000/api/credit-card/validate", {
+      const sanitizedCardNumber = cardNumber.replace(/\s+/g, "");
+      const res = await fetch("https://credit-card-validator-g6lr.onrender.com/api/credit-card/validate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token || "dummy-jwt-token"}`,
         },
-        body: JSON.stringify({ cardNumber }),
+        body: JSON.stringify({ cardNumber: sanitizedCardNumber }),
       });
       if (!res.ok) {
         throw new Error("API error");
