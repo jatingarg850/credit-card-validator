@@ -34,7 +34,7 @@ export default function Home() {
         const base = cardNumber.slice(0, -1);
         if (base.length > 0 && cardNumber.length > 1) {
           try {
-            const res = await fetch("http://localhost:3000/api/credit-card/validate", {
+            const res = await fetch("https://credit-card-validator-g6lr.onrender.com/api/credit-card/validate", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
